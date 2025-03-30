@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formularz</h1>
+    <form id="myForm">
+        <div class="form-group">
+            <label for="age">Wiek:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Płeć:</label>
+            <input type="radio" id="male" name="gender" value="mężczyzna" required>
+            <label for="male">Mężczyzna</label>
+            <input type="radio" id="female" name="gender" value="kobieta" required>
+            <label for="female">Kobieta</label>
+        </div>
+        <div class="form-group">
+            <label for="color">Ulubiony kolor:</label>
+            <select id="color" name="color" required>
+                <option value="czerwony">Czerwony</option>
+                <option value="zielony">Zielony</option>
+                <option value="niebieski">Niebieski</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="gameSeries">Ulubiona seria gier:</label>
+            <select id="gameSeries" name="gameSeries" required>
+                <option value="gta">GTA</option>
+                <option value="fifa">FIFA</option>
+                <option value="battlefield">Battlefield</option>
+            </select>
+        </div>
+        <button type="submit">Wyślij</button>
+    </form>
+
+    <h2>Dane z formularza:</h2>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Zatrzymuje domyślne działanie formularza
+
+            // Pobranie danych z formularza
+            const age = document.getElementById('age').value;
+            const name = document.getElementById('name').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const color = document.getElementById('color').value;
+            const gameSeries = document.getElementById('gameSeries').value;
+
+            // Wyświetlenie danych
+            document.getElementById('result').innerHTML = `
+                <p><strong>Wiek:</strong> ${age}</p>
+                <p><strong>Imię:</strong> ${name}</p>
+                <p><strong>Płeć:</strong> ${gender}</p>
+                <p><strong>Ulubiony kolor:</strong> ${color}</p>
+                <p><strong>Ulubiona seria gier:</strong> ${gameSeries}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
